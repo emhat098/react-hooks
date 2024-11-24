@@ -1,7 +1,9 @@
+import Clock from '@/components/clock/clock';
 import Counter from '@/components/counter/counter';
 import CounterWithReducer from '@/components/counter/counter-with-reducer';
 import Section from '@/components/section/section';
 import Todos from '@/components/todos/todos';
+import Users from '@/components/users/user';
 
 export default function IndexPage() {
   return (
@@ -19,10 +21,22 @@ export default function IndexPage() {
         <Todos />
       </Section>
       <Section
-        id={'Counter with Reducer'}
+        id={'userReducer2'}
         title={'useReducer hook - Counter with Reducer'}
       >
         <CounterWithReducer />
+      </Section>
+      <Section
+        id={'useEffect'}
+        title={'useEffect - List of user.'}
+      >
+        <Users />
+      </Section>
+      <Section
+        id={'useEffect'}
+        title={'useEffect - Clock.'}
+      >
+        <Clock />
       </Section>
     </div>
   );
