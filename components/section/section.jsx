@@ -2,10 +2,22 @@
 
 import PropTypes from 'prop-types';
 
-const Section = ({ title, children }) => {
+const Section = ({ id, title, children }) => {
+  const Title = id ? (
+    <a
+      id={id}
+      href={`#${id}`}
+      className={'font-medium text-xl'}
+    >
+      {title}
+    </a>
+  ) : (
+    <h2 className={'font-medium text-xl'}>{title}</h2>
+  );
+
   return (
     <section className={'my-2'}>
-      <h2 className={'font-medium text-xl'}>{title}</h2>
+      {Title}
       <hr className={'my-2'} />
       <div>{children}</div>
     </section>
@@ -13,6 +25,7 @@ const Section = ({ title, children }) => {
 };
 
 Section.propTypes = {
+  id: PropTypes.string,
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 };

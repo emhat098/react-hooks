@@ -4,7 +4,10 @@ import Section from '@/components/section/section';
 export default function IndexPage() {
   return (
     <div className=''>
-      <Section title={'useState hook'}>
+      <Section
+        id={'useState'}
+        title={'useState hook'}
+      >
         <Counter />
       </Section>
     </div>
