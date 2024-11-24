@@ -16,10 +16,10 @@ const Section = ({ id, title, children }) => {
   );
 
   return (
-    <section className={'my-2'}>
+    <section className={'my-2 shadow rounded-lg p-4'}>
       {Title}
       <hr className={'my-2'} />
-      <div>{children}</div>
+      <div className={'shadow-md rounded-lg w-max p-4'}>{children}</div>
     </section>
   );
 };

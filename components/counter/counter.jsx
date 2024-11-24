@@ -6,18 +6,8 @@ import Button from '../button/button';
 const Counter = () => {
   const [count, setCount] = useState(0);
 
-  //   const handleOnClick = () => {
-  //     setCount((prev) => prev + 1);
-  //     setCount((prev) => prev + 1);
-  //     setCount((prev) => prev + 1);
-  //     setCount((prev) => prev + 1);
-  //   };
-
   const handleOnClick = () => {
-    setCount(count + 1);
-    setCount(count + 1);
-    setCount(count + 1);
-    setCount(count + 1);
+    setCount((prev) => prev + 1);
   };
 
   return (

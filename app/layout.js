@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
             </span>
           </nav>
         </div>
-        <main className={'max-w-6xl m-auto p-4 text-sm'}>{children}</main>
+        <main className={'max-w-6xl m-auto p-4'}>{children}</main>
       </body>
     </html>
   );

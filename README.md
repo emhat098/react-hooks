@@ -241,3 +241,69 @@ Every time we call the `updater function`, React put it into a `queue` and durin
 5. Last `setCount((prev) => prev + 1);`: `count` is `4` as a pending state and return `5` as the next state.
 
 Reference: [`Queuing a serries of state updates`](https://react.dev/learn/queueing-a-series-of-state-updates)
+
+Reference: https://react-hooks-emdev.vercel.app/#useState
+
+## useReducer hook
+
+The `useReducer` Hook in React provides a powerful way to manage complex state logic in a predictable and scalable manner. It is specific useful when state transitions depend on multiple actions or when state logic become difficult to manage with `useState`. There is the list of benefits of `useReducer`:
+
+1. Organized and Predictable State Logic: `useReducer` uses a reducer function to define how state transitions occur based on actions.
+2. Simplifies Complex state management: for state with multiple interdependent variables or complex updates, `useReducer` providers better clarity than `useState`.
+3. Decouples Logic from Components: By moving state logic into a reducer function, the component becomes simpler and focuses on rendering.
+4. Improve Scalability: `userReducer` scales better for managing complex state compared to `useState`.
+5. Integration with `Context` API: `userReducer` integrates with React Context API for managing global state.
+6. Helps avoid deeply nested state logic: for deeply nested or complex state structures, `useReducer` keeps the logic cleaner by defining how actions modify the state.
+
+For example, let's convert the Counter from `useState` to `useReducer` to see what is happening?
+
+```jsx
+'use client';
+
+import React, { useReducer } from 'react';
+import Button from '../button/button';
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'increment':
+      return {
+        count: state.count + 1,
+      };
+    case 'decrement':
+      return {
+        count: state.count > 0 ? state.count - 1 : 0,
+      };
+    case 'reset':
+      return {
+        count: 0,
+      };
+  }
+
+  throw new Error('Unknown action');
+};
+
+const CounterWithReducer = () => {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
+
+  return (
+    <div className={'flex flex-col gap-2'}>
+      <div className='flex gap-2'>
+        <Button onClick={() => dispatch({ type: 'increment' })}>
+          {'Increment'}
+        </Button>
+        <Button onClick={() => dispatch({ type: 'decrement' })}>
+          {'Decrement'}
+        </Button>
+        <Button onClick={() => dispatch({ type: 'reset' })}>{'Reset'}</Button>
+      </div>
+      <p>
+        Current Count: <span className={'font-bold'}>{state.count}</span>
+      </p>
+    </div>
+  );
+};
+
+export default CounterWithReducer;
+```
+
+By `useReducer`, we can see the CounterWithReducer Component more clearly. It is only focus on rendering. And the logic inside the component that moving on to other side that we can put in other place in project for structuring.
