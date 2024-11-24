@@ -307,3 +307,29 @@ export default CounterWithReducer;
 ```
 
 By `useReducer`, we can see the CounterWithReducer Component more clearly. It is only focus on rendering. And the logic inside the component that moving on to other side that we can put in other place in project for structuring.
+
+There is a detailed comparison table between `useReducer` and `useState`:
+
+| **Aspect**                   | **`useState`**                                                             | **`useReducer`**                                                                                           |
+| ---------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| **Use Case**                 | Simple state logic or managing a few independent state variables.          | Complex state logic with multiple transitions or interdependent variables.                                 |
+| **State Management Style**   | Directly updates state using setter functions.                             | Uses a reducer function to handle state transitions based on dispatched actions.                           |
+| **Readability**              | Simple and intuitive for small-scale state management.                     | Requires more boilerplate but organizes complex logic effectively.                                         |
+| **Code Example**             | `const [count, setCount] = useState(0);`                                   | `const [state, dispatch] = useReducer(reducer, initialState);`                                             |
+| **State Update**             | Updates are straightforward, e.g., `setCount(count + 1);`.                 | Updates depend on the action, e.g., `dispatch({ type: 'increment' });`.                                    |
+| **Logic Centralization**     | Logic can become scattered across components as state updates grow.        | All logic for state transitions is centralized in the reducer function.                                    |
+| **Scalability**              | May become difficult to manage as the number of state variables increases. | Scales better for complex state with well-defined actions and transitions.                                 |
+| **Performance**              | Optimal for lightweight state updates.                                     | Slightly better for scenarios with many simultaneous updates as it consolidates logic.                     |
+| **Ease of Use**              | Easier to learn and implement for beginners.                               | Requires understanding of reducers and action patterns, similar to Redux concepts.                         |
+| **Integration with Context** | Not commonly combined with Context for global state management.            | Seamlessly integrates with Context for managing global or shared state.                                    |
+| **Debugging**                | Debugging is straightforward for simple logic.                             | Debugging is easier in complex cases as actions and state transitions are explicit.                        |
+| **Flexibility**              | Best for independent, simple states like form inputs or toggles.           | Great for cases like managing a cart, form states with multiple fields, or deeply nested state structures. |
+
+**Key Takeaways:**
+
+- Use `useState` when state is simple, isolated, and doesn’t involve complex updates.
+- Use `useReducer` when state management involves multiple interdependent variables or transitions.
+
+Reference: https://react-hooks-two-iota.vercel.app/#useReducer
+
+---
